@@ -10,6 +10,8 @@ defmodule UAInspector.Parser.Bot do
 
   defp parse(_, []), do: :unknown
 
+  defp parse([ua], regex), do: parse(ua, regex)
+
   defp parse(ua, [{regex, result} | database]) do
     if Regex.match?(regex, ua) do
       result(ua, result)
